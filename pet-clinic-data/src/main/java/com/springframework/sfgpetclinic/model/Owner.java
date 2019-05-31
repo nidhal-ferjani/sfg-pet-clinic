@@ -1,4 +1,4 @@
-package com.springframework.sfgpetclinic.models;
+package com.springframework.sfgpetclinic.model;
 
 /**
  * Created by Nidhal on 26/05/2019.
