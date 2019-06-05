@@ -2,6 +2,7 @@ package com.springframework.sfgpetclinic.model;
 
 import javax.persistence.Column;
 import javax.validation.constraints.Digits;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,7 +20,7 @@ public class Owner extends Person{
     @Digits(fraction = 0, integer = 10)
     private String telephone;
 
-    private Set<Pet> pets;
+    private Set<Pet> pets = new HashSet<>();
 
     public Set<Pet> getPets() {
         return pets;
@@ -51,5 +52,20 @@ public class Owner extends Person{
 
     public void setTelephone(String telephone) {
         this.telephone = telephone;
+    }
+
+    @Override
+    public String toString() {
+
+        String petAll = "";
+        for ( Pet pet: pets ) {
+            petAll+=pet.getName() +" - ";
+        }
+        return "Owner{" +
+                "address='" + address + '\'' +
+                ", city='" + city + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", pets= " + petAll +
+                '}';
     }
 }
