@@ -1,8 +1,6 @@
 package com.springframework.sfgpetclinic.model;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -10,16 +8,34 @@ import java.util.Set;
  */
 public class Vet extends Person {
 
-    @ManyToMany
-    @JoinTable(name = "vet_specialities",joinColumns = @JoinColumn(name = "vet_id"),
-              inverseJoinColumns = @JoinColumn(name = "speciality_id"))
-    private Set<Vet> specialities;
+   // @ManyToMany
+   // @JoinTable(name = "vet_specialities",joinColumns = @JoinColumn(name = "vet_id"),
+   //           inverseJoinColumns = @JoinColumn(name = "speciality_id"))
 
-    public Set<Vet> getSpecialities() {
-        return specialities;
+    private Set<Speciality> specialities;
+
+    public Set<Speciality> getSpecialities() {
+        if (this.specialities == null) {
+            this.specialities = new HashSet<>();
+        }
+        return this.specialities;
     }
 
-    public void setSpecialities(Set<Vet> specialities) {
+    public void setSpecialities(Set<Speciality> specialities) {
         this.specialities = specialities;
+    }
+
+    @Override
+    public String toString() {
+
+         String specialityALL = "";
+
+        for (Speciality speciality : specialities ) {
+            specialityALL += speciality.toString() + " - ";
+
+        }
+        return "Vet{" + super.toString()+
+                "specialities=" + specialityALL +
+                '}';
     }
 }

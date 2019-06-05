@@ -20,9 +20,12 @@ public class Owner extends Person{
     @Digits(fraction = 0, integer = 10)
     private String telephone;
 
-    private Set<Pet> pets = new HashSet<>();
+    private Set<Pet> pets ;
 
     public Set<Pet> getPets() {
+        if(pets == null){
+            pets = new HashSet<>();
+        }
         return pets;
     }
 
