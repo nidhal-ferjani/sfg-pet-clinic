@@ -3,11 +3,13 @@ package com.springframework.sfgpetclinic.model;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
 
 /**
  * Created by Nidhal on 01/06/2019.
  */
+@MappedSuperclass
 public class BaseEntity implements Serializable{
 
     @Id
