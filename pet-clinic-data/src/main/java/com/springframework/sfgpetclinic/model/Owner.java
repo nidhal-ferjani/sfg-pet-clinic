@@ -1,6 +1,6 @@
 package com.springframework.sfgpetclinic.model;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +8,8 @@ import java.util.Set;
 /**
  * Created by Nidhal on 26/05/2019.
  */
+@Entity
+@Table(name = "owners")
 public class Owner extends Person{
 
     @Column(name = "address")
@@ -20,6 +22,7 @@ public class Owner extends Person{
     @Digits(fraction = 0, integer = 10)
     private String telephone;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets ;
 
     public Set<Pet> getPets() {
