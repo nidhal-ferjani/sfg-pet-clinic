@@ -1,17 +1,19 @@
 package com.springframework.sfgpetclinic.model;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by Nidhal on 26/05/2019.
  */
+@Entity
+@Table(name = "vets")
 public class Vet extends Person {
 
-   // @ManyToMany
-   // @JoinTable(name = "vet_specialities",joinColumns = @JoinColumn(name = "vet_id"),
-   //           inverseJoinColumns = @JoinColumn(name = "speciality_id"))
-
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "vet_specialities",joinColumns = @JoinColumn(name = "vet_id"),
+              inverseJoinColumns = @JoinColumn(name = "speciality_id"))
     private Set<Speciality> specialities;
 
     public Set<Speciality> getSpecialities() {
