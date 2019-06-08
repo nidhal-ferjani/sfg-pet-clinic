@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by Nidhal on 26/05/2019.
@@ -28,6 +30,20 @@ public class Pet extends BaseEntity {
     @Column(name = "birth_date", nullable = false)
     @DateTimeFormat(pattern = "yyyy-mm-dd")
     private LocalDate birthDate;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+    private Set<Visit> visits;
+
+    public Set<Visit> getVisits() {
+        if(visits == null){
+            visits = new HashSet<>();
+        }
+        return visits;
+    }
+
+    public void setVisits(Set<Visit> visits) {
+        this.visits = visits;
+    }
 
     public PetType getPetType() {
         return petType;

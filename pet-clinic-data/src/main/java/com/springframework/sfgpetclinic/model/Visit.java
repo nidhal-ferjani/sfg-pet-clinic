@@ -2,12 +2,14 @@ package com.springframework.sfgpetclinic.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 /**
  * Created by Nidhal on 05/06/2019.
  */
+@Entity
+@Table(name = "visits")
 public class Visit extends BaseEntity {
 
     @Column(name = "visit_date")
@@ -17,7 +19,8 @@ public class Visit extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "pet_id")
+    @ManyToOne
+    @JoinColumn(name = "pet_id")
     private Pet pet;
 
     public LocalDate getDate() {
