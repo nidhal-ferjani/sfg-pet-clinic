@@ -1,5 +1,7 @@
 package com.springframework.sfgpetclinic.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,6 +10,11 @@ import java.util.Set;
  * Created by Nidhal on 26/05/2019.
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "vets")
 public class Vet extends Person {
 

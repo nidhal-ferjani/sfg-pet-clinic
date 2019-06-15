@@ -1,5 +1,10 @@
 package com.springframework.sfgpetclinic.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotEmpty;
@@ -7,9 +12,18 @@ import javax.validation.constraints.NotEmpty;
 /**
  * Created by Nidhal on 26/05/2019.
  */
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 public class Person extends BaseEntity {
+
+    public Person(Long id, @NotEmpty String firstName, @NotEmpty String lastName) {
+        super(id);
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     @Column(name = "first_name", nullable = false)
     @NotEmpty
@@ -17,29 +31,7 @@ public class Person extends BaseEntity {
 
     @Column(name = "last_name", nullable = false)
     @NotEmpty
-    private  String lastName;
+    private String lastName;
 
-    public String getLastName() {
-        return lastName;
-    }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
-    }
 }

@@ -1,5 +1,7 @@
 package com.springframework.sfgpetclinic.model;
 
+import lombok.*;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -11,6 +13,11 @@ import java.util.Set;
  * Created by Nidhal on 05/06/2019.
  */
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Table(name = "specialities")
 public class Speciality extends  BaseEntity {
 
