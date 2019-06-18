@@ -50,19 +50,4 @@ public class Owner extends Person{
         }
         return pets;
     }
-
-    @Override
-    public String toString() {
-
-        String petAll = "";
-        for ( Pet pet: pets ) {
-            petAll+=pet.getName() +" - ";
-        }
-        return "Owner{" +
-                "address='" + address + '\'' +
-                ", city='" + city + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", pets= " + petAll +
-                '}';
-    }
 }
